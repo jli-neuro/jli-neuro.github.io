@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jing Li — Computational Psychiatry • Reinforcement Learning • Self‑efficacy & reward generalization" />
+  <title>Jing Li</title>
+
+  <!-- Tailwind via CDN (fastest way to get you a great-looking static site) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "Apple Color Emoji", "Segoe UI Emoji"],
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(0,0,0,0.08)",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth scrolling for anchor links */
+    html { scroll-behavior: smooth; }
+    /* Better text rendering */
+    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  </style>
+</head>
+<body class="bg-white text-slate-900">
+
+  <!-- Top gradient backdrop -->
+  <div class="absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-indigo-50 via-white to-white"></div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/75 backdrop-blur">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
+      <a href="#top" class="group inline-flex items-center gap-2">
+        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white shadow-soft">JL</span>
+        <span class="text-sm font-semibold tracking-tight text-slate-900">Jing Li</span>
+      </a>
+
+      <button id="menuBtn" class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 md:hidden" aria-expanded="false" aria-controls="mobileMenu">
+        Menu
+      </button>
+
+      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <a class="text-sm text-slate-700 hover:text-slate-900" href="#about">About</a>
+        <a class="text-sm text-slate-700 hover:text-slate-900" href="#research">Research</a>
+        <a class="text-sm text-slate-700 hover:text-slate-900" href="#projects">Projects</a>
+        <a class="text-sm text-slate-700 hover:text-slate-900" href="#publications">Publications</a>
+        <a class="text-sm text-slate-700 hover:text-slate-900" href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden border-t border-slate-200/70 bg-white md:hidden">
+      <nav class="mx-auto flex max-w-5xl flex-col gap-1 px-5 py-3" aria-label="Mobile">
+        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#about">About</a>
+        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#research">Research</a>
+        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#projects">Projects</a>
+        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#publications">Publications</a>
+        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="top" class="mx-auto max-w-5xl px-5">
+
+    <!-- Hero -->
+    <section class="pb-10 pt-10 md:pb-16 md:pt-14">
+      <div class="grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
+            Computational Psychiatry • Reinforcement Learning • Self‑efficacy
+          </p>
+
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
+            Jing Li
+          </h1>
+          <p class="mt-3 text-lg leading-relaxed text-slate-700">
+            PhD candidate in Neuroscience (Mount Sinai), working at the intersection of
+            reinforcement learning, human decision‑making, and computational psychiatry.
+            I build behavioral tasks and models to study capability beliefs, motivation, and reward generalization.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">
+              Contact
+            </a>
+            <a href="#projects" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
+              View projects
+            </a>
+            <a href="#" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50" aria-label="Download CV">
+              Download CV
+            </a>
+          </div>
+
+          <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
+            <span class="inline-flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+              Based in New York City
+            </span>
+            <span class="text-slate-300">•</span>
+            <span>Open to collaborations</span>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-4 text-sm">
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Google Scholar</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">GitHub</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Twitter / X</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="md:justify-self-end">
+          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
+            <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-indigo-100 blur-2xl"></div>
+            <div class="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-emerald-100 blur-2xl"></div>
+
+            <!-- Headshot placeholder (swap with an <img>) -->
+            <div class="relative">
+              <div class="flex h-56 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 to-slate-700 text-white">
+                <div class="text-center">
+                  <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-2xl font-semibold">JL</div>
+                  <p class="mt-3 text-sm text-white/80">Add a headshot here</p>
+                </div>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+                <div class="rounded-2xl border border-slate-200 bg-white p-3">
+                  <p class="text-slate-500">Focus</p>
+                  <p class="mt-1 font-semibold text-slate-900">Capability beliefs</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white p-3">
+                  <p class="text-slate-500">Methods</p>
+                  <p class="mt-1 font-semibold text-slate-900">Task + modeling</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white p-3">
+                  <p class="text-slate-500">Tools</p>
+                  <p class="mt-1 font-semibold text-slate-900">Python, JS</p>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white p-3">
+                  <p class="text-slate-500">Collab</p>
+                  <p class="mt-1 font-semibold text-slate-900">NYC / remote</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="scroll-mt-24 border-t border-slate-200 py-12">
+      <div class="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight">About</h2>
+          <p class="mt-3 text-slate-700 leading-relaxed">
+            I’m a neuroscience PhD candidate studying how people learn what they can and cannot do—and how those beliefs
+            shape motivation, planning, and decision‑making.
+          </p>
+          <p class="mt-3 text-slate-700 leading-relaxed">
+            My work connects Bandura’s self‑efficacy theory with reinforcement learning and Bayesian learning. I’m particularly
+            interested in how inflated value propagation and miscalibration can relate to reward generalization and mania‑risk traits.
+          </p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-sm font-semibold text-slate-900">Quick facts</h3>
+          <dl class="mt-4 grid gap-4 text-sm">
+            <div class="grid grid-cols-[120px_1fr] gap-3">
+              <dt class="text-slate-500">Affiliation</dt>
+              <dd class="text-slate-800">Icahn School of Medicine at Mount Sinai</dd>
+            </div>
+            <div class="grid grid-cols-[120px_1fr] gap-3">
+              <dt class="text-slate-500">Area</dt>
+              <dd class="text-slate-800">Computational psychiatry, RL, cognitive modeling</dd>
+            </div>
+            <div class="grid grid-cols-[120px_1fr] gap-3">
+              <dt class="text-slate-500">Current</dt>
+              <dd class="text-slate-800">Behavioral tasks + modeling pipelines</dd>
+            </div>
+            <div class="grid grid-cols-[120px_1fr] gap-3">
+              <dt class="text-slate-500">Open to</dt>
+              <dd class="text-slate-800">Collaborations, talks, internships</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="scroll-mt-24 border-t border-slate-200 py-12">
+      <div class="flex flex-col gap-6">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight">Research</h2>
+          <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">
+            I build models and experiments around a simple question: how does an agent learn a calibrated belief about its own capability?
+            That belief can regulate goal selection, effort, reward generalization, and planning under uncertainty.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p class="text-sm font-semibold text-slate-900">Self‑efficacy as a learning signal</p>
+            <p class="mt-2 text-sm text-slate-700 leading-relaxed">Formalizing self‑efficacy updates and how they interact with extrinsic value learning.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p class="text-sm font-semibold text-slate-900">Reward generalization tasks</p>
+            <p class="mt-2 text-sm text-slate-700 leading-relaxed">Behavioral assays linking generalization parameters to self‑reported traits (e.g., POG).</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p class="text-sm font-semibold text-slate-900">Planning under internal uncertainty</p>
+            <p class="mt-2 text-sm text-slate-700 leading-relaxed">How motor noise and capability uncertainty should shape planning and action selection.</p>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-sm font-semibold text-slate-900">Keywords</h3>
+          <p class="mt-3 text-sm text-slate-700">
+            Reinforcement learning • computational psychiatry • self‑efficacy • belief updating • reward generalization • goal selection • hierarchical RL • uncertainty
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="scroll-mt-24 border-t border-slate-200 py-12">
+      <div class="flex items-end justify-between gap-6">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight">Selected projects</h2>
+          <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">A few ongoing lines of work. Replace titles/descriptions with your latest.</p>
+        </div>
+        <a href="#" class="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 md:inline-flex">View all</a>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-base font-semibold text-slate-900">Clock/Dino reward generalization task</h3>
+            <span class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">Behavior</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            A behavioral assay to quantify reward generalization via psychometric/logistic fits, linked to self‑reported positive overgeneralization.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Paper</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Demo</a>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-base font-semibold text-slate-900">Dynamic self‑efficacy RL model</h3>
+            <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">Modeling</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            A computational account where evolving capability beliefs modulate value propagation and goal selection, producing overgeneralization‑like patterns.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Preprint</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Slides</a>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-base font-semibold text-slate-900">Dart self‑efficacy task</h3>
+            <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">Experiment</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            An interactive motor‑decision task measuring how efficacy beliefs evolve under changing constraints and feedback.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Protocol</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-base font-semibold text-slate-900">Offline→Online RL (summer school project)</h3>
+            <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">RL</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            Exploring how to carry offline‑learned value signals into online policy improvement while managing OOD actions and overestimation.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3 text-sm">
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Write‑up</a>
+            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" class="scroll-mt-24 border-t border-slate-200 py-12">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight">Publications & presentations</h2>
+        <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">Add / reorder items as needed. Keep it short and link out to Scholar for the full list.</p>
+      </div>
+
+      <div class="mt-6 grid gap-4">
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">Selected</p>
+          <ol class="mt-4 space-y-4 text-sm text-slate-700">
+            <li>
+              <p class="leading-relaxed">
+                <span class="font-semibold text-slate-900">Li, J.</span> &amp; Radulescu, A. (2024).
+                <span class="italic">Self‑efficacy update in reinforcement learning: Impact on goal selection for Q‑learning agents.</span>
+                IMOL @ NeurIPS (Workshop).
+                <a class="ml-2 text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">PDF</a>
+              </p>
+            </li>
+            <li>
+              <p class="leading-relaxed">
+                <span class="font-semibold text-slate-900">(Add your preprint / journal submission here)</span>
+                <span class="italic">Title.</span>
+                Venue.
+                <a class="ml-2 text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Link</a>
+              </p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p class="text-sm font-semibold text-slate-900">Mentorship</p>
+          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
+            Mentored a college student in the <span class="font-medium">Summer Program in Computational Psychiatry Education</span> (Summer 2024),
+            providing guidance on research design, task measurement of reward generalization, and presentation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="scroll-mt-24 border-t border-slate-200 py-12">
+      <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight">Contact</h2>
+          <p class="mt-3 max-w-2xl text-slate-700 leading-relaxed">
+            The fastest way to reach me is email. I’m happy to chat about collaborations, talks, and research ideas.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="mailto:your.email@domain.com" class="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">
+              Email me
+            </a>
+            <a href="#" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
+              Schedule a meeting
+            </a>
+          </div>
+
+          <div class="mt-6 text-sm text-slate-600">
+            <p><span class="font-medium text-slate-800">Email:</span> your.email@domain.com</p>
+            <p class="mt-1"><span class="font-medium text-slate-800">Location:</span> New York City</p>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h3 class="text-sm font-semibold text-slate-900">If you want to copy‑paste updates</h3>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li>• Replace the placeholder links (Scholar/GitHub/LinkedIn).</li>
+            <li>• Swap the headshot placeholder with an <code class="rounded bg-slate-100 px-1">&lt;img&gt;</code>.</li>
+            <li>• Update the projects list with your top 3–6 items.</li>
+            <li>• Add your CV PDF and set the “Download CV” link.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 py-10">
+      <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+        <p class="text-sm text-slate-600">© <span id="year"></span> Jing Li. All rights reserved.</p>
+        <div class="flex flex-wrap gap-4 text-sm">
+          <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#top">Back to top</a>
+          <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+
+    btn?.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close mobile menu when clicking a link
+    menu?.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (!menu.classList.contains('hidden')) {
+          menu.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = String(new Date().getFullYear());
+  </script>
+
+</body>
+</html>
