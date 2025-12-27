@@ -1,418 +1,336 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jing Li — Computational Psychiatry • Reinforcement Learning • Self‑efficacy & reward generalization" />
-  <title>Jing Li</title>
-
-  <!-- Tailwind via CDN (fastest way to get you a great-looking static site) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "Apple Color Emoji", "Segoe UI Emoji"],
-          },
-          boxShadow: {
-            soft: "0 10px 30px rgba(0,0,0,0.08)",
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jing Li | Computational Cognitive Science</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --text-primary: #e6e6e6;
+            --text-secondary: #a0a0a0;
+            --accent: #64ffda; /* Cyan accent common in AI/Tech */
+            --card-bg: #161b22;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-      }
-    }
-  </script>
 
-  <style>
-    /* Smooth scrolling for anchor links */
-    html { scroll-behavior: smooth; }
-    /* Better text rendering */
-    body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 10%;
+            position: fixed;
+            width: 100%;
+            background: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: monospace;
+            transition: all 0.3s;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 1px;
+            background: #233554;
+            margin-left: 20px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .skills-list li {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .skills-list li::before {
+            content: "▹";
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .folder-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav { padding: 1.5rem 5%; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
 </head>
-<body class="bg-white text-slate-900">
+<body>
 
-  <!-- Top gradient backdrop -->
-  <div class="absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-indigo-50 via-white to-white"></div>
+    <nav>
+        <div class="logo">Jing Li</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="resume.pdf" target="_blank">CV</a> </div>
+    </nav>
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/75 backdrop-blur">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
-      <a href="#top" class="group inline-flex items-center gap-2">
-        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white shadow-soft">JL</span>
-        <span class="text-sm font-semibold tracking-tight text-slate-900">Jing Li</span>
-      </a>
-
-      <button id="menuBtn" class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 md:hidden" aria-expanded="false" aria-controls="mobileMenu">
-        Menu
-      </button>
-
-      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
-        <a class="text-sm text-slate-700 hover:text-slate-900" href="#about">About</a>
-        <a class="text-sm text-slate-700 hover:text-slate-900" href="#research">Research</a>
-        <a class="text-sm text-slate-700 hover:text-slate-900" href="#projects">Projects</a>
-        <a class="text-sm text-slate-700 hover:text-slate-900" href="#publications">Publications</a>
-        <a class="text-sm text-slate-700 hover:text-slate-900" href="#contact">Contact</a>
-      </nav>
+    <div class="hero">
+        <p style="color: var(--accent); font-family: monospace; margin-bottom: 20px;">Hi, my name is</p>
+        <h1>Jing Li.</h1>
+        <h2>I model how minds measure themselves.</h2>
+        <p style="max-width: 600px; color: var(--text-secondary); margin-bottom: 30px;">
+            I am a PhD Candidate in Neuroscience bridging clinical phenomenology and AI alignment. 
+            I build computational models of <span class="highlight">self-efficacy</span> and <span class="highlight">belief calibration</span> to understand robust learning in both humans and agents.
+        </p>
+        <a href="mailto:jing.li@icahn.mssm.edu" class="btn">Get In Touch</a>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden border-t border-slate-200/70 bg-white md:hidden">
-      <nav class="mx-auto flex max-w-5xl flex-col gap-1 px-5 py-3" aria-label="Mobile">
-        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#about">About</a>
-        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#research">Research</a>
-        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#projects">Projects</a>
-        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#publications">Publications</a>
-        <a class="rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50" href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main -->
-  <main id="top" class="mx-auto max-w-5xl px-5">
-
-    <!-- Hero -->
-    <section class="pb-10 pt-10 md:pb-16 md:pt-14">
-      <div class="grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <p class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
-            Computational Psychiatry • Reinforcement Learning • Self‑efficacy
-          </p>
-
-          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900 md:text-5xl">
-            Jing Li
-          </h1>
-          <p class="mt-3 text-lg leading-relaxed text-slate-700">
-            PhD candidate in Neuroscience (Mount Sinai), working at the intersection of
-            reinforcement learning, human decision‑making, and computational psychiatry.
-            I build behavioral tasks and models to study capability beliefs, motivation, and reward generalization.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#contact" class="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">
-              Contact
-            </a>
-            <a href="#projects" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
-              View projects
-            </a>
-            <a href="#" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50" aria-label="Download CV">
-              Download CV
-            </a>
-          </div>
-
-          <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-600">
-            <span class="inline-flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-              Based in New York City
-            </span>
-            <span class="text-slate-300">•</span>
-            <span>Open to collaborations</span>
-          </div>
-
-          <div class="mt-6 flex flex-wrap gap-4 text-sm">
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Google Scholar</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">GitHub</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Twitter / X</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">LinkedIn</a>
-          </div>
-        </div>
-
-        <div class="md:justify-self-end">
-          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
-            <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-indigo-100 blur-2xl"></div>
-            <div class="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-emerald-100 blur-2xl"></div>
-
-            <!-- Headshot placeholder (swap with an <img>) -->
-            <div class="relative">
-              <div class="flex h-56 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-900 to-slate-700 text-white">
-                <div class="text-center">
-                  <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-2xl font-semibold">JL</div>
-                  <p class="mt-3 text-sm text-white/80">Add a headshot here</p>
-                </div>
-              </div>
-
-              <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
-                <div class="rounded-2xl border border-slate-200 bg-white p-3">
-                  <p class="text-slate-500">Focus</p>
-                  <p class="mt-1 font-semibold text-slate-900">Capability beliefs</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-3">
-                  <p class="text-slate-500">Methods</p>
-                  <p class="mt-1 font-semibold text-slate-900">Task + modeling</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-3">
-                  <p class="text-slate-500">Tools</p>
-                  <p class="mt-1 font-semibold text-slate-900">Python, JS</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-3">
-                  <p class="text-slate-500">Collab</p>
-                  <p class="mt-1 font-semibold text-slate-900">NYC / remote</p>
-                </div>
-              </div>
+    <section id="about">
+        <h3>About Me</h3>
+        <div class="about-grid">
+            <div class="content">
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    I am currently a PhD researcher at the <span class="highlight">Icahn School of Medicine at Mount Sinai</span>. 
+                    My work began in clinical neuroscience, studying patient behaviors, but I realized that understanding "dysfunction" requires rigorous models of how intelligent systems form beliefs about their own capabilities.
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                    Today, I use <strong>Reinforcement Learning</strong> and <strong>Bayesian Inference</strong> to model how agents (human or artificial) maintain internal models of competence vs. uncertainty. My goal is to develop frameworks for <span class="highlight">AI Capability Calibration</span>—preventing confidently stated hallucinations in high-stakes settings.
+                </p>
+                <p style="color: var(--text-secondary);">Here are a few technologies I've been working with:</p>
+                <ul class="skills-list">
+                    <li>Python (PyTorch)</li>
+                    <li>Hierarchical RL</li>
+                    <li>Bayesian Modeling</li>
+                    <li>R / Stan</li>
+                    <li>Behavioral Task Design</li>
+                    <li>Generative Models</li>
+                </ul>
             </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="scroll-mt-24 border-t border-slate-200 py-12">
-      <div class="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight">About</h2>
-          <p class="mt-3 text-slate-700 leading-relaxed">
-            I’m a neuroscience PhD candidate studying how people learn what they can and cannot do—and how those beliefs
-            shape motivation, planning, and decision‑making.
-          </p>
-          <p class="mt-3 text-slate-700 leading-relaxed">
-            My work connects Bandura’s self‑efficacy theory with reinforcement learning and Bayesian learning. I’m particularly
-            interested in how inflated value propagation and miscalibration can relate to reward generalization and mania‑risk traits.
-          </p>
-        </div>
-
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 class="text-sm font-semibold text-slate-900">Quick facts</h3>
-          <dl class="mt-4 grid gap-4 text-sm">
-            <div class="grid grid-cols-[120px_1fr] gap-3">
-              <dt class="text-slate-500">Affiliation</dt>
-              <dd class="text-slate-800">Icahn School of Medicine at Mount Sinai</dd>
             </div>
-            <div class="grid grid-cols-[120px_1fr] gap-3">
-              <dt class="text-slate-500">Area</dt>
-              <dd class="text-slate-800">Computational psychiatry, RL, cognitive modeling</dd>
+    </section>
+
+    <section id="research">
+        <h3>Selected Research</h3>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <span class="folder-icon">▹</span>
+                <div class="project-title">Self-Efficacy as Inference</div>
+                <div class="project-desc">
+                    Modeling self-efficacy not as a static trait, but as a dynamic belief state over latent competence. Simulations show how this regulates exploration-exploitation in sequential decision making.
+                </div>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>RL</span>
+                    <span>CogSci</span>
+                </div>
             </div>
-            <div class="grid grid-cols-[120px_1fr] gap-3">
-              <dt class="text-slate-500">Current</dt>
-              <dd class="text-slate-800">Behavioral tasks + modeling pipelines</dd>
+
+            <div class="project-card">
+                <span class="folder-icon">▹</span>
+                <div class="project-title">The "Mania" Attractor</div>
+                <div class="project-desc">
+                    Demonstrating how maladaptive belief updates create attractor-like dynamics resembling bipolar mania. Using computational failures to understand clinical instability.
+                </div>
+                <div class="tech-stack">
+                    <span>Simulation</span>
+                    <span>Psychiatry</span>
+                    <span>Marr's Levels</span>
+                </div>
             </div>
-            <div class="grid grid-cols-[120px_1fr] gap-3">
-              <dt class="text-slate-500">Open to</dt>
-              <dd class="text-slate-800">Collaborations, talks, internships</dd>
+
+            <div class="project-card">
+                <span class="folder-icon">▹</span>
+                <div class="project-title">AI Capability Calibration</div>
+                <div class="project-desc">
+                    Developing evaluation protocols to test if agents can distinguish "what I can do" from "how sure I am." Designing tasks to measure selective abstention and hallucination reduction.
+                </div>
+                <div class="tech-stack">
+                    <span>Alignment</span>
+                    <span>Evaluations</span>
+                    <span>LLMs</span>
+                </div>
             </div>
-          </dl>
+
+            <div class="project-card">
+                <span class="folder-icon">▹</span>
+                <div class="project-title">Online Reward Generalization</div>
+                <div class="project-desc">
+                    Designed and deployed a novel online behavioral paradigm (N=163) linking reward overgeneralization signatures to mania-risk measures.
+                </div>
+                <div class="tech-stack">
+                    <span>JavaScript</span>
+                    <span>Behavioral Design</span>
+                    <span>Data Analysis</span>
+                </div>
+            </div>
+
         </div>
-      </div>
     </section>
 
-    <!-- Research -->
-    <section id="research" class="scroll-mt-24 border-t border-slate-200 py-12">
-      <div class="flex flex-col gap-6">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight">Research</h2>
-          <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">
-            I build models and experiments around a simple question: how does an agent learn a calibrated belief about its own capability?
-            That belief can regulate goal selection, effort, reward generalization, and planning under uncertainty.
-          </p>
-        </div>
-
-        <div class="grid gap-4 md:grid-cols-3">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p class="text-sm font-semibold text-slate-900">Self‑efficacy as a learning signal</p>
-            <p class="mt-2 text-sm text-slate-700 leading-relaxed">Formalizing self‑efficacy updates and how they interact with extrinsic value learning.</p>
-          </div>
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p class="text-sm font-semibold text-slate-900">Reward generalization tasks</p>
-            <p class="mt-2 text-sm text-slate-700 leading-relaxed">Behavioral assays linking generalization parameters to self‑reported traits (e.g., POG).</p>
-          </div>
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p class="text-sm font-semibold text-slate-900">Planning under internal uncertainty</p>
-            <p class="mt-2 text-sm text-slate-700 leading-relaxed">How motor noise and capability uncertainty should shape planning and action selection.</p>
-          </div>
-        </div>
-
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 class="text-sm font-semibold text-slate-900">Keywords</h3>
-          <p class="mt-3 text-sm text-slate-700">
-            Reinforcement learning • computational psychiatry • self‑efficacy • belief updating • reward generalization • goal selection • hierarchical RL • uncertainty
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="scroll-mt-24 border-t border-slate-200 py-12">
-      <div class="flex items-end justify-between gap-6">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight">Selected projects</h2>
-          <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">A few ongoing lines of work. Replace titles/descriptions with your latest.</p>
-        </div>
-        <a href="#" class="hidden rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50 md:inline-flex">View all</a>
-      </div>
-
-      <div class="mt-6 grid gap-4 md:grid-cols-2">
-        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-base font-semibold text-slate-900">Clock/Dino reward generalization task</h3>
-            <span class="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">Behavior</span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            A behavioral assay to quantify reward generalization via psychometric/logistic fits, linked to self‑reported positive overgeneralization.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-3 text-sm">
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Paper</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Demo</a>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-base font-semibold text-slate-900">Dynamic self‑efficacy RL model</h3>
-            <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">Modeling</span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            A computational account where evolving capability beliefs modulate value propagation and goal selection, producing overgeneralization‑like patterns.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-3 text-sm">
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Preprint</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Slides</a>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-base font-semibold text-slate-900">Dart self‑efficacy task</h3>
-            <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">Experiment</span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            An interactive motor‑decision task measuring how efficacy beliefs evolve under changing constraints and feedback.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-3 text-sm">
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Protocol</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
-          </div>
-        </article>
-
-        <article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-base font-semibold text-slate-900">Offline→Online RL (summer school project)</h3>
-            <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">RL</span>
-          </div>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            Exploring how to carry offline‑learned value signals into online policy improvement while managing OOD actions and overestimation.
-          </p>
-          <div class="mt-4 flex flex-wrap gap-3 text-sm">
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Write‑up</a>
-            <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Code</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Publications -->
-    <section id="publications" class="scroll-mt-24 border-t border-slate-200 py-12">
-      <div>
-        <h2 class="text-2xl font-semibold tracking-tight">Publications & presentations</h2>
-        <p class="mt-3 max-w-3xl text-slate-700 leading-relaxed">Add / reorder items as needed. Keep it short and link out to Scholar for the full list.</p>
-      </div>
-
-      <div class="mt-6 grid gap-4">
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p class="text-sm font-semibold text-slate-900">Selected</p>
-          <ol class="mt-4 space-y-4 text-sm text-slate-700">
-            <li>
-              <p class="leading-relaxed">
-                <span class="font-semibold text-slate-900">Li, J.</span> &amp; Radulescu, A. (2024).
-                <span class="italic">Self‑efficacy update in reinforcement learning: Impact on goal selection for Q‑learning agents.</span>
-                IMOL @ NeurIPS (Workshop).
-                <a class="ml-2 text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">PDF</a>
-              </p>
-            </li>
-            <li>
-              <p class="leading-relaxed">
-                <span class="font-semibold text-slate-900">(Add your preprint / journal submission here)</span>
-                <span class="italic">Title.</span>
-                Venue.
-                <a class="ml-2 text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Link</a>
-              </p>
-            </li>
-          </ol>
-        </div>
-
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p class="text-sm font-semibold text-slate-900">Mentorship</p>
-          <p class="mt-3 text-sm text-slate-700 leading-relaxed">
-            Mentored a college student in the <span class="font-medium">Summer Program in Computational Psychiatry Education</span> (Summer 2024),
-            providing guidance on research design, task measurement of reward generalization, and presentation.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="scroll-mt-24 border-t border-slate-200 py-12">
-      <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <h2 class="text-2xl font-semibold tracking-tight">Contact</h2>
-          <p class="mt-3 max-w-2xl text-slate-700 leading-relaxed">
-            The fastest way to reach me is email. I’m happy to chat about collaborations, talks, and research ideas.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="mailto:your.email@domain.com" class="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95">
-              Email me
-            </a>
-            <a href="#" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
-              Schedule a meeting
-            </a>
-          </div>
-
-          <div class="mt-6 text-sm text-slate-600">
-            <p><span class="font-medium text-slate-800">Email:</span> your.email@domain.com</p>
-            <p class="mt-1"><span class="font-medium text-slate-800">Location:</span> New York City</p>
-          </div>
-        </div>
-
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 class="text-sm font-semibold text-slate-900">If you want to copy‑paste updates</h3>
-          <ul class="mt-4 space-y-2 text-sm text-slate-700">
-            <li>• Replace the placeholder links (Scholar/GitHub/LinkedIn).</li>
-            <li>• Swap the headshot placeholder with an <code class="rounded bg-slate-100 px-1">&lt;img&gt;</code>.</li>
-            <li>• Update the projects list with your top 3–6 items.</li>
-            <li>• Add your CV PDF and set the “Download CV” link.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-200 py-10">
-      <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-        <p class="text-sm text-slate-600">© <span id="year"></span> Jing Li. All rights reserved.</p>
-        <div class="flex flex-wrap gap-4 text-sm">
-          <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#top">Back to top</a>
-          <a class="text-slate-700 underline underline-offset-4 hover:text-slate-900" href="#">Privacy</a>
-        </div>
-      </div>
+    <footer>
+        Designed & Built by Jing Li | 2025
     </footer>
 
-  </main>
-
-  <script>
-    // Mobile menu toggle
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-
-    btn?.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!isOpen));
-    });
-
-    // Close mobile menu when clicking a link
-    menu?.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', () => {
-        if (!menu.classList.contains('hidden')) {
-          menu.classList.add('hidden');
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    // Footer year
-    document.getElementById('year').textContent = String(new Date().getFullYear());
-  </script>
-
+    <script>
+        // Simple script for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
