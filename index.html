@@ -79,23 +79,14 @@
         .subtitle {
             font-size: 1.1rem;
             color: var(--meta-color);
-            margin-bottom: 20px;
-        }
-
-        /* Profile Photo Styles */
-        .profile-photo {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 50%; /* Circle shape. Remove line for square. */
-            flex-shrink: 0;
-            border: 1px solid #eee;
+            margin-bottom: 16px;
         }
 
         /* Links Row (Email, Github, etc) */
         .links {
             display: flex;
-            gap: 20px;
+            gap: 16px;
+            flex-wrap: wrap;
             font-size: 0.95rem;
         }
 
@@ -106,6 +97,16 @@
 
         .links a:hover {
             text-decoration: underline;
+        }
+
+        /* Profile Photo Styles */
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%; /* Circle shape. Remove line for square. */
+            flex-shrink: 0;
+            border: 1px solid #eee;
         }
 
         /* Content Section */
@@ -124,21 +125,35 @@
         }
 
         p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-size: 1rem;
+        }
+
+        /* Simple bullet list that matches minimalist style */
+        ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .muted {
+            color: var(--meta-color);
         }
 
         /* Mobile Adjustments */
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
             .container { padding: 0 10px; }
-            
+
             header {
                 flex-direction: column-reverse;
                 align-items: center;
                 text-align: center;
             }
-            
+
             .links {
                 justify-content: center;
             }
@@ -148,7 +163,7 @@
 <body>
 
     <div class="container">
-        
+
         <nav>
             <a href="#" class="logo">Jing Li</a>
             <a href="resume.pdf" target="_blank" class="cv-link">CV</a>
@@ -158,37 +173,95 @@
             <div class="header-text">
                 <h1>Jing Li</h1>
                 <div class="subtitle">PhD Candidate at Icahn School of Medicine at Mount Sinai</div>
-                
+
                 <div class="links">
                     <a href="mailto:jing.li@icahn.mssm.edu">Email</a>
+                    <!-- Replace # with your real links -->
+                    <a href="https://jli-neuro.github.io" target="_blank" rel="noopener noreferrer">Website</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">ORCID</a>
                 </div>
             </div>
-            
+
             <img src="profile.jpg" alt="Jing Li" class="profile-photo">
         </header>
 
         <section>
             <h2>About Me</h2>
-            
+
             <p>
-                My research uses computational models to understand how intelligent agents—both human and artificial—measure their own capabilities. For instance, how do we distinguish "what we can do" from "how sure we are"? How do miscalibrated beliefs about our own competence lead to maladaptive behaviors like mania? And can we build AI agents that know when to abstain from answering?
+                I study how people learn what they <em>can</em> and <em>cannot</em> do—and how those beliefs shape motivation,
+                planning, and reward learning. My work connects ideas from computational psychiatry and cognitive science
+                (e.g., self-efficacy, belief updating, generalization) with reinforcement learning and Bayesian modeling.
+                Broadly, I’m interested in how agents calibrate their capability under uncertainty, and how miscalibration
+                can lead to maladaptive decision-making.
             </p>
 
             <p>
-                I am currently a PhD Candidate in Neuroscience at the  Icahn School of Medicine at Mount Sinai, advised by Angela Radulescu. I am also a Research Affiliate with Mark Ho at NYU. My work integrates Reinforcement Learning and Bayesian Inference to bridge clinical phenomenology with AI alignment.
+                I’m a PhD candidate in Neuroscience at the Icahn School of Medicine at Mount Sinai (New York, NY), working with
+                Dr. Angela Radulescu. I’m also affiliated with NYU through collaborations with Professor Mark Ho. I build
+                behavioral tasks and computational models to measure and explain individual differences in reward generalization
+                and capability beliefs, with a focus on mechanisms relevant to mania risk and related constructs.
             </p>
 
             <p>
-                Prior to my PhD, I was a Research Assistant at Brigham and Women's Hospital in Boston, where I built computational pipelines for lesion network analysis. I hold a B.S. in Neuroscience from Duke University.
+                Prior to my PhD, I was a Research Assistant at Brigham and Women’s Hospital in Boston, where I built computational
+                pipelines for lesion network analysis. I hold a B.S. in Neuroscience from Duke University.
+            </p>
+
+            <p class="muted">
+                <strong>Keywords:</strong> computational psychiatry · reinforcement learning · Bayesian cognitive modeling · self-efficacy / capability calibration · reward generalization · planning under uncertainty
             </p>
         </section>
 
         <section>
-            <h2>Selected Research Interests</h2>
+            <h2>Research Themes</h2>
+            <ul>
+                <li>
+                    <strong>Capability beliefs and calibration:</strong>
+                    How do agents infer their ability from noisy outcomes? How do “can-do” beliefs guide goal selection, persistence, and exploration?
+                </li>
+                <li>
+                    <strong>Reward generalization and value propagation:</strong>
+                    When do people over-generalize from positive outcomes? How can value propagate too far in sequential decision problems—and what does that imply for mood-related risk?
+                </li>
+                <li>
+                    <strong>Tasks as behavioral assays:</strong>
+                    Designing paradigms that produce identifiable model signatures (not just effects), with stability for individual-differences and translational use.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Current Projects</h2>
+            <ul>
+                <li>
+                    <strong>Behavioral assay of positive overgeneralization:</strong>
+                    A task framework that quantifies reward generalization in learning, linked to self-reported positive overgeneralization and motivational traits.
+                </li>
+                <li>
+                    <strong>Dynamic self-efficacy / capability calibration models:</strong>
+                    Models where capability beliefs interact with value learning (e.g., weighting high-value outcomes) to shape planning and generalization.
+                </li>
+                <li>
+                    <strong>Motor planning under internal uncertainty:</strong>
+                    How internal motor noise and action uncertainty should be represented in planning and decision-making.
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Publications &amp; Preprints</h2>
             <p>
-                <strong>Computational Psychiatry:</strong> Modeling self-efficacy as a dynamic belief state; understanding mania as an attractor state in belief updating; mapping clinical instability to robust-learning failure modes.
-                <br><br>
-    
+                For a complete list, see my <a href="#" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+            </p>
+            <ul>
+                <!-- Replace these with real citations -->
+                <li><strong>Paper Title One</strong>. Jing Li, Coauthor. <span class="muted">Venue/Year</span>.</li>
+                <li><strong>Paper Title Two</strong>. Jing Li, Coauthor. <span class="muted">Venue/Year</span>.</li>
+            </ul>
         </section>
 
     </div>
