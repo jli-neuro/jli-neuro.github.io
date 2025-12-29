@@ -55,9 +55,17 @@
             border-bottom: 1px solid #000;
         }
 
-        /* Main Header Section */
+        /* Main Header Section with Flexbox for Photo */
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
             margin-bottom: 40px;
+        }
+
+        .header-text {
+            flex: 1;
         }
 
         h1 {
@@ -65,12 +73,23 @@
             font-weight: 700;
             margin-bottom: 5px;
             letter-spacing: -0.5px;
+            margin-top: 0;
         }
 
         .subtitle {
             font-size: 1.1rem;
             color: var(--meta-color);
             margin-bottom: 20px;
+        }
+
+        /* Profile Photo Styles */
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%; /* Circle shape. Remove line for square. */
+            flex-shrink: 0;
+            border: 1px solid #eee;
         }
 
         /* Links Row (Email, Github, etc) */
@@ -113,6 +132,16 @@
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
             .container { padding: 0 10px; }
+            
+            header {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .links {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -126,11 +155,16 @@
         </nav>
 
         <header>
-            <h1>Jing Li</h1>
-            <div class="subtitle">PhD Candidate at Icahn School of Medicine at Mount Sinai</div>
+            <div class="header-text">
+                <h1>Jing Li</h1>
+                <div class="subtitle">PhD Candidate at Icahn School of Medicine at Mount Sinai</div>
+                
+                <div class="links">
+                    <a href="mailto:jing.li@icahn.mssm.edu">Email</a>
+                </div>
+            </div>
             
-            <div class="links">
-                <a href="mailto:jing.li@icahn.mssm.edu">Email</a>
+            <img src="profile.jpg" alt="Jing Li" class="profile-photo">
         </header>
 
         <section>
@@ -141,7 +175,7 @@
             </p>
 
             <p>
-                I am currently a PhD Candidate in Neuroscience at the <a href="https://icahn.mssm.edu/" target="_blank" style="color:var(--link-color); text-decoration:none;">Icahn School of Medicine at Mount Sinai</a>, advised by <a href="#" style="color:var(--link-color); text-decoration:none;">Angela Radulescu</a>. I am also a Research Affiliate with <a href="#" style="color:var(--link-color); text-decoration:none;">Mark Ho</a> at NYU. My work integrates Reinforcement Learning and Bayesian Inference to bridge clinical phenomenology with AI alignment.
+                I am currently a PhD Candidate in Neuroscience at the  Icahn School of Medicine at Mount Sinai, advised by Angela Radulescu. I am also a Research Affiliate with Mark Ho at NYU. My work integrates Reinforcement Learning and Bayesian Inference to bridge clinical phenomenology with AI alignment.
             </p>
 
             <p>
@@ -152,8 +186,9 @@
         <section>
             <h2>Selected Research Interests</h2>
             <p>
-                <strong>Computational Psychiatry:</strong> Modeling self-efficacy as a dynamic belief state; understanding mania as an attractor state in self-efficacy belief updating.
-                <br>
+                <strong>Computational Psychiatry:</strong> Modeling self-efficacy as a dynamic belief state; understanding mania as an attractor state in belief updating; mapping clinical instability to robust-learning failure modes.
+                <br><br>
+                <strong>AI Alignment & Cognitive Modeling:</strong> Calibration metrics for LLMs; offline-to-online reinforcement learning; studying OOD generalization and hallucination reduction through the lens of metacognition.
             </p>
         </section>
 
